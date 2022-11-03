@@ -1,0 +1,34 @@
+python train.py --img 640\
+               --batch 16\
+               --epochs 120\
+               --data /home/ziv/speeding_catcher/yolov5/data/vehicle_and_plate/vehicle_and_plate.yaml\
+               --weights yolov5s.pt\
+               --workers 1\
+               --project "vehicle_epoch_120"\
+               --name "yolov5_vehicle_and_plate"\
+               --exist-ok
+               
+
+# clearml credential
+api { 
+    # Ziv Low En Hao's workspace
+    web_server: https://app.clear.ml
+    api_server: https://api.clear.ml
+    files_server: https://files.clear.ml
+    # yolov5_vehicle_and_plate
+    credentials {
+        "access_key" = "ERWNL2NXHE6MVFGQ55CO"
+        "secret_key"  = "aBmeNyAoj9wiWlKbyokRnAdEjLsUOwbRBF8jjyzTx2IX2B3Ngl"
+    }
+}
+
+
+#wandb api key
+5ceb43399b54a17926069cdf20e825fd12daa68a
+
+
+
+# Detect.py command
+python detect.py --weights /home/ziv/speeding_catcher/yolov5/vehicle_open_image/yolov5_vehicle_and_plate/weights/best.pt --source IMG_8892.MOV --view-img --conf-thres 0.1 --classes 1 --vid-stride 1
+
+python detect.py --weights /home/ziv/speeding_catcher/yolov5/vehicle_open_image/yolov5_vehicle_and_plate/weights/best.pt --source footage-car-9.png --view-img --conf-thres 0.1 --iou-thres 0.8 --classes 0
